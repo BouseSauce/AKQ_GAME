@@ -1,5 +1,7 @@
 package sample;
 
+import javax.sound.midi.Soundbank;
+
 /**
  * Created by Bouse PC on 3/10/2016.
  */
@@ -39,9 +41,10 @@ class HumanPlayer implements Player {
         chipStack+=chipsWon;
     }
 
-    public String playerChoice()
+    public int playerChoice()
     {
-        return "";
+        System.out.print("playerChoice");
+        return 0;
     }
 }
 

@@ -42,33 +42,27 @@ public class AIPlayer implements Player {
         chipStack += chipsWon;
     }
 
-    public String playerChoice() {
+    public int playerChoice() {
         Random random = new Random();
 
-    int kBetPercentage = 3;
-    int qBetPercentage = 1;
+        int qBetPercentage = 1;
 
-
-    if (playerCard == 'A') {
-        return "Bet";
+        if (playerCard == 'A') {
+            playerBet(1);
+            return 1;
+        }
+        if (playerCard == 'K') {
+            return 0;
+        }
+        if ((random.nextInt(qBetPercentage) == 1)) {
+            playerBet(1);
+            return 1;
+        } else
+            return 0;
     }
-    if (playerCard == 'K') {
-            /* if kBetPercentage is 3 there is a 33% chance (0 is an option) that nextInt will
-                be 1. Computer would then bet with a King 33% of the time.
-             */
-        if (random.nextInt(kBetPercentage) == 1)
-            return "Bet";
-        else
-            return "Check";
-    }
-    if ((random.nextInt(qBetPercentage) == 1)) {
-        return "Bet";
-    } else
-            return "Check";
-}
-
 
 
 
 
 }
+

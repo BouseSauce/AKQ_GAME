@@ -23,8 +23,8 @@ public class GUI extends JFrame {
     static String queenDir = "C:\\Users\\Bouse PC\\IdeaProjects\\AKQ_GAME\\images\\Queen.png ";
     static String frogDir = "C:\\Users\\Bouse PC\\IdeaProjects\\AKQ_GAME\\images\\FrogHat.jpg ";
 
-    Boolean callButtonClick = false;
-    Boolean foldButtonClick = false;
+    private Boolean callButtonClick = false;
+    private Boolean foldButtonClick = false;
 
 
     Player player = null;
@@ -76,11 +76,12 @@ public class GUI extends JFrame {
 
 
         callButton.addActionListener((ActionEvent event) -> {
-            callButtonClick = true;
+            System.out.println("Call was clicked");
+            setCallButtonClick(true);
         });
 
         foldButton.addActionListener((ActionEvent event ) -> {
-            foldButtonClick = false;
+            setFoldButtonClick(true);
         });
     }
 
@@ -129,13 +130,11 @@ public class GUI extends JFrame {
 
     public Boolean getCallButtonClick()
     {
-        System.out.println("callButton");
         return callButtonClick;
     }
 
     public Boolean getFoldButtonClick()
     {
-        System.out.println("foldButton");
         return foldButtonClick;
     }
 

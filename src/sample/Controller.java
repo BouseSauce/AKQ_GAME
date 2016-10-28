@@ -14,22 +14,20 @@ public class Controller {
         Game game = new Game(playerOne, playerTwo);
         GUI playerGui = new GUI();
         game.setPlayersStartingStackSize(startingStack);
-        while (playerGui.isActive()) {
+
+        for (;;){
             game.initGame();
-            playerGui.setTextBox("Round number: " + game.getRound());
+            System.out.println(playerOne.getPlayerCard() + " - is Player Ones Card");
             switch (playerOne.playerChoice()) {
-                case "Bet": {
+                case 1: {
                     System.out.print("Player One Bet");
                     playerGui.setTextBox("Player One Bet $1");
                     game.addToPot(game.playerOne.playerBet(1));
                     playerGui.updatePlayerCard(playerTwo.getPlayerCard());
                     while(!playerGui.getCallButtonClick() || !playerGui.getFoldButtonClick()) {
-                        try {
-                            wait(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+
                     }
+                    System.out.println("test");
                     if (playerGui.getCallButtonClick()) {
                         playerGui.setTextBox("Pot is now: " + game.getPot());
                         playerGui.setTextBox(game.evaluate() + " Wins");
@@ -40,7 +38,7 @@ public class Controller {
 
                     playerGui.setCallButtonClick(false);
                 }
-                case "Call": {
+                case 0: {
                     playerGui.setTextBox("Player One Checked");
                     System.out.print("Player One Checked");
                     //game.addToPot(game.playerOne.playerBet(1));
@@ -50,9 +48,11 @@ public class Controller {
                     if (playerGui.getCallButtonClick()) {
                         playerGui.setTextBox("Pot is now: " + game.getPot());
                         playerGui.setTextBox(game.evaluate() + " Wins");
+                        System.out.print("Player Two Called");
                     } else {
                         playerGui.setTextBox("Player Two Folds ");
                         playerGui.setTextBox("Player One wins " + game.getPot());
+                        System.out.print("Player Two Called");
                     }
 
                     playerGui.setCallButtonClick(false);
