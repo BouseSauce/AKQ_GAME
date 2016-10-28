@@ -48,14 +48,12 @@ public class AIPlayer implements Player {
         int qBetPercentage = 1;
 
         if (playerCard == 'A') {
-            playerBet(1);
             return 1;
         }
         if (playerCard == 'K') {
             return 0;
         }
         if ((random.nextInt(qBetPercentage) == 1)) {
-            playerBet(1);
             return 1;
         } else
             return 0;
