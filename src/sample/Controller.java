@@ -1,9 +1,6 @@
 package sample;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import java.io.IOException;
-import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -18,7 +15,7 @@ public class Controller {
         game.setPlayersStartingStackSize(startingStack);
         Scanner in  = new Scanner(System.in);
 
-        while(playerOne.getChipStack() >= 0 && playerTwo.getChipStack() >= 0){
+        while (playerOne.getChipStack() > 0 && playerTwo.getChipStack() > 0) {
 
 
             if(game.getRound() == 0)
@@ -26,7 +23,8 @@ public class Controller {
                 System.out.println("Welcome to my Ace King Queen Game" +
                         "\nYou will play as Player 2,You have the choices Call (C) or Fold (F)" +
                         "\nAce > King > Queen" +
-                        "\nThe Game is over when a player has no chips left" +
+                        "\nThe Game is over when a player has no chips left" + "" +
+                        "\nPress Q to end the game" +
                         "\nGood Luck!\n");
             }
 
@@ -58,6 +56,8 @@ public class Controller {
                         System.out.println("Player Two Calls");
                         game.addToPot(playerTwo.playerBet(1));
                         System.out.println("Winner:"+ game.evaluate());
+                    } else if (s.toUpperCase().equals("Q")) {
+                        playerTwo.setChipStack(0);
                     }
                     else
                     {
@@ -85,6 +85,8 @@ public class Controller {
                     {
                         System.out.println("Player Two Calls");
                         System.out.println("Winner:"+ game.evaluate());
+                    } else if (s.toUpperCase().equals("Q")) {
+                        playerTwo.setChipStack(0);
                     }
                     else
                     {
