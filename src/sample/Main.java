@@ -12,7 +12,11 @@ public class Main {
         int startingStack = 20;
 
         try {
-            Controller controller = new Controller(aiPlayer, humanPlayer, startingStack);
+            try {
+                Controller controller = new Controller(aiPlayer, humanPlayer, startingStack);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
